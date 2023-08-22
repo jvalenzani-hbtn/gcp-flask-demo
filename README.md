@@ -4,10 +4,11 @@ Based on: https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-
 
 ## GCP Console
 
-1. Enable Cloud Run API (When asked, click Authorize)
+1. Enable Cloud Run API (When asked, click Authorize) and Cloud Build
 
 ```bash
 gcloud services enable run.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
 ```
 
 Output example:
@@ -73,6 +74,9 @@ gunicorn==21.2.0
 # https://hub.docker.com/_/python
 FROM python:3.11-slim
 
+# Default PORT
+ENV PORT=8080
+
 # Allow statements and log messages to immediately appear in the logs
 ENV PYTHONUNBUFFERED True
 
@@ -121,9 +125,9 @@ gcloud container images list
 
 6. Test locally on Cloud Shell
 
-docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld
+docker run -d -p 8080:8080 -e "PORT=8080" gcr.io/$GOOGLE_CLOUD_PROJECT/my_app
 
 7. Deploy to Cloud Run
 
-gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld --allow-unauthenticated --region=$LOCATION
+gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/my_app --allow-unauthenticated --region=$LOCATION
 
