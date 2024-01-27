@@ -131,3 +131,14 @@ docker run -d -p 8080:8080 -e "PORT=8080" gcr.io/$GOOGLE_CLOUD_PROJECT/my_app
 
 gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/my_app --allow-unauthenticated --region=$LOCATION
 
+## TroubleShooting
+
+```sh
+javier_valenzani@cloudshell:~/lumiere (lumiere-412519)$ docker run -d -p 8080:8080 -e "PORT=8080" gcr.io/$GOOGLE_CLOUD_PROJECT/lumiere-0.1
+Unable to find image 'gcr.io/lumiere-412519/lumiere-0.1:latest' locally
+docker: Error response from daemon: unauthorized: You don't have the needed permissions to perform this operation, and you may have invalid credentials. To authenticate your request, follow the steps in: https://cloud.google.com/container-registry/docs/advanced-authentication.
+See 'docker run --help'.
+```
+
+> https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper
+
