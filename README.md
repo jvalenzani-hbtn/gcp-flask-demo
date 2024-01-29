@@ -124,12 +124,22 @@ gcloud container images list
 ```
 
 6. Test locally on Cloud Shell
-
+```bash
 docker run -d -p 8080:8080 -e "PORT=8080" gcr.io/$GOOGLE_CLOUD_PROJECT/my_app
+```
 
 7. Deploy to Cloud Run
-
+```bash
 gcloud run deploy --image gcr.io/$GOOGLE_CLOUD_PROJECT/my_app --allow-unauthenticated --region=$LOCATION
+```
+Para pasar variables de entorno, por ejemplo el secret de un service account:
+```bash
+gcloud run deploy your-service-name \
+    --image gcr.io/your-project/your-image \
+    --add-cloudsql-instances your-cloud-sql-instance \
+    --update-env-vars FIREBASE_SERVICE_ACCOUNT="$(cat encoded-service-account.txt)"
+```
+
 
 ## TroubleShooting
 
