@@ -150,5 +150,7 @@ docker: Error response from daemon: unauthorized: You don't have the needed perm
 See 'docker run --help'.
 ```
 
+`gcloud auth configure-docker`
+
 > https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper
 
