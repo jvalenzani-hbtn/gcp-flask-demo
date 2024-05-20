@@ -154,3 +154,6 @@ See 'docker run --help'.
 
 > https://cloud.google.com/container-registry/docs/advanced-authentication#gcloud-helper
 
+NUEVO COSO
+https://cloud.google.com/build/docs/build-push-docker-image
+
